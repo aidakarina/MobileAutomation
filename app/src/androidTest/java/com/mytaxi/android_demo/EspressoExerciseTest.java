@@ -40,8 +40,8 @@ public class EspressoExerciseTest {
     @Test
     public void searchDriverAndCall() throws Exception{
         DriverSearch.searchWithHint(textToSearch);
-        DriverSearch.selectDriver(activity,driverName);
-        DriverProfile.call();
+        //DriverSearch.selectDriver(activity,driverName);
+        //DriverProfile.call();
     }
 
     @After

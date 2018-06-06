@@ -15,8 +15,8 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsNot.not;
 
 public class DriverSearch {
 
@@ -43,7 +43,8 @@ public class DriverSearch {
      * @throws Exception
      */
     public static void selectDriver(MainActivity activity, String driverName) throws Exception{
-        onView(withText(driverName)).inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().getDecorView())))).
+        onView(withText(driverName)).inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().
+                getDecorView())))).
                 perform(scrollTo()).
                 perform(click());
         //Wait to sync test
