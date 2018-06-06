@@ -9,6 +9,7 @@ import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -32,7 +33,7 @@ public class DriverSearch {
         onView(mytaxiDemoLabel).check(matches(isDisplayed()));
         onView(searchTextbox).perform(typeText(hintText));
         //Wait to sync test
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     }
 
     /**
@@ -43,6 +44,7 @@ public class DriverSearch {
      */
     public static void selectDriver(MainActivity activity, String driverName) throws Exception{
         onView(withText(driverName)).inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().getDecorView())))).
+                perform(scrollTo()).
                 perform(click());
         //Wait to sync test
         Thread.sleep(5000);
