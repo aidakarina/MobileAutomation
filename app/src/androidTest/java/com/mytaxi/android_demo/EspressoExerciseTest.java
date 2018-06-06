@@ -1,6 +1,9 @@
 package com.mytaxi.android_demo;
 
+import android.Manifest;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.rule.GrantPermissionRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.mytaxi.android_demo.activities.MainActivity;
 import com.mytaxi.screens.DriverProfile;
@@ -12,8 +15,10 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
+@RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EspressoExerciseTest {
 
@@ -22,6 +27,9 @@ public class EspressoExerciseTest {
     private String password = "video1";
     private String textToSearch = "sa";
     private String driverName = "Sarah Friedrich";
+
+    @Rule
+    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(Manifest.permission.ACCESS_FINE_LOCATION);
 
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule =
@@ -40,8 +48,8 @@ public class EspressoExerciseTest {
     @Test
     public void searchDriverAndCall() throws Exception{
         DriverSearch.searchWithHint(textToSearch);
-        //DriverSearch.selectDriver(activity,driverName);
-        //DriverProfile.call();
+        DriverSearch.selectDriver(activity,driverName);
+        DriverProfile.call();
     }
 
     @After
