@@ -49,6 +49,7 @@ public class EspressoExerciseTest {
     @Test
     public void searchDriverAndCall() throws Exception{
         DriverSearch.searchWithHint(textToSearch);
+        //test
         onView(withText(driverName)).inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().getDecorView())))).
                 perform(scrollTo()).
                 perform(click());
