@@ -1,7 +1,6 @@
 package com.mytaxi.android_demo;
 
-import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.test.espresso.matcher.RootMatchers;
+import android.support.test.rule.ActivityTestRule;
 
 import com.mytaxi.android_demo.activities.MainActivity;
 import com.mytaxi.screens.DriverProfile;
@@ -15,14 +14,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.*;
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EspressoExerciseTest {
 
@@ -33,8 +24,8 @@ public class EspressoExerciseTest {
     private String driverName = "Sarah Friedrich";
 
     @Rule
-    public IntentsTestRule<MainActivity> activityTestRule =
-            new IntentsTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule =
+            new ActivityTestRule<>(MainActivity.class);
 
     @Before
     public void setUp() throws Exception {
@@ -49,11 +40,7 @@ public class EspressoExerciseTest {
     @Test
     public void searchDriverAndCall() throws Exception{
         DriverSearch.searchWithHint(textToSearch);
-        //test
-        onView(withText(driverName)).inRoot(RootMatchers.withDecorView(not(is(activity.getWindow().getDecorView())))).
-                perform(scrollTo()).
-                perform(click());
-        //DriverSearch.selectDriver(activity,driverName);
+        DriverSearch.selectDriver(activity,driverName);
         DriverProfile.call();
     }
 

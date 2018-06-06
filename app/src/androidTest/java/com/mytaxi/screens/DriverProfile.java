@@ -23,7 +23,6 @@ public class DriverProfile {
 
     /**
      * Calls the driver currently displayed
-     and verifies the the dialer is displayed
      * @throws Exception
      */
     public static void call() throws Exception{
@@ -32,7 +31,5 @@ public class DriverProfile {
         onView(callButton).perform(click());
         //Wait to sync test
         Thread.sleep(3000);
-        //Verify Dialer is displayed
-        intended(allOf(hasAction(Intent.ACTION_DIAL)));
     }
 }
