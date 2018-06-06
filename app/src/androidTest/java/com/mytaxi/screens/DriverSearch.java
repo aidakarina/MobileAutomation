@@ -33,7 +33,7 @@ public class DriverSearch {
         onView(mytaxiDemoLabel).check(matches(isDisplayed()));
         onView(searchTextbox).perform(typeText(hintText));
         //Wait to sync test
-        Thread.sleep(10000);
+        Thread.sleep(3000);
     }
 
     /**
@@ -48,6 +48,6 @@ public class DriverSearch {
                 perform(scrollTo()).
                 perform(click());
         //Wait to sync test
-        Thread.sleep(5000);
+        Thread.sleep(3000);
     }
 }

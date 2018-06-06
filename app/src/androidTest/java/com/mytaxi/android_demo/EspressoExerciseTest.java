@@ -12,14 +12,11 @@ import com.mytaxi.screens.LogIn;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 
 @RunWith(AndroidJUnit4.class)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EspressoExerciseTest {
 
     private MainActivity activity = null;
@@ -41,12 +38,8 @@ public class EspressoExerciseTest {
     }
 
     @Test
-    public void loginToApp() throws Exception{
+    public void espressoTest() throws Exception{
         LogIn.logInToMyTaxi(username,password);
-    }
-
-    @Test
-    public void searchDriverAndCall() throws Exception{
         DriverSearch.searchWithHint(textToSearch);
         DriverSearch.selectDriver(activity,driverName);
         DriverProfile.call();
